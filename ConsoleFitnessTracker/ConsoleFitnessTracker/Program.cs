@@ -11,12 +11,13 @@ namespace ConsoleFitnessTracker
         static void Main()
         {
             // Prompt user for minutes exercised 
-            System.Console.Write("Enter how many minutes you exercised: ");
+            Console.Write("Enter how many minutes you exercised: ");
 
-            string input = System.Console.ReadLine();
-            
+            string input = Console.ReadLine();
+
             // Add minutes exercised to total 
             // Display total minutes exercised to the screen 
+            Console.WriteLine("You've exercised for " + input + " minutes.");
             // Repeat until user quits    
         }
     }
