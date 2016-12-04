@@ -10,51 +10,52 @@ namespace ConsoleFitnessTracker
     {
         static void Main()
         {
-            int runningTotal = 0;
-            bool keepGoing = true;
-
-            while (keepGoing)
+            var runningTotal = 0.0;
+            
+            while (true)
             { 
                 // Prompt user for minutes exercised 
                 Console.Write("Enter how many minutes you exercised or type quit to exit: ");
-                string input = Console.ReadLine();
-                if (input == "quit")
+                var input = Console.ReadLine();
+                if (input.ToLower() == "quit")
                 {
-                    keepGoing = false;
+                   break;
                 }
-                else
-                {
-                    int minutes = int.Parse(input);
-                    if (minutes <= 0)
+                  try
                     {
-                        Console.WriteLine("I'm sorry but that isn't a valide amount of time.");
+                        var minutes = double.Parse(input);
+                        if (minutes <= 0)
+                        {
+                            Console.WriteLine("I'm sorry but that isn't a valide amount of time.");
+                            continue;
+                        }
+                        else if (minutes <= 10)
+                        {
+                            Console.WriteLine("Better than nothing!");
+                        }
+                        else if (minutes <= 30)
+                        {
+                            Console.WriteLine("Way to go!");
+                        }
+                        else if (minutes <= 60)
+                        {
+                            Console.WriteLine("Look at you, you machine you!");
+                        }
+                        else
+                        {
+                            Console.WriteLine("...show off");
+                        }
+                        // Add minutes exercised to total 
+                        runningTotal += minutes;
+
+                        // Display total minutes exercised to the screen 
+                        Console.WriteLine("You've exercised for " + runningTotal + " minutes.");
+                    }
+                    catch (FormatException)
+                    {
+                        Console.WriteLine("That is not valid input");
                         continue;
                     }
-                    else if (minutes <= 10)
-                    {
-                        Console.WriteLine("Better than nothing!");
-                    }
-                    else if (minutes <= 30)
-                    {
-                        Console.WriteLine("Way to go!");
-                    }
-                    else if (minutes <= 60)
-                    {
-                        Console.WriteLine("Look at you, you machine you!");
-                    }
-                    else 
-                    {
-                        Console.WriteLine("...show off");
-                    }
-
-                    // Add minutes exercised to total 
-                    runningTotal = runningTotal + minutes;
-
-                    // Display total minutes exercised to the screen 
-                    Console.WriteLine("You've exercised for " + runningTotal + " minutes.");
-
-                    // Repeat until user quits
-                }
                 
             }
             Console.WriteLine("Goodbye!");
