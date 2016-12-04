@@ -25,6 +25,27 @@ namespace ConsoleFitnessTracker
                 else
                 {
                     int minutes = int.Parse(input);
+                    if (minutes <= 0)
+                    {
+                        Console.WriteLine("I'm sorry but that isn't a valide amount of time.");
+                        continue;
+                    }
+                    else if (minutes <= 10)
+                    {
+                        Console.WriteLine("Better than nothing!");
+                    }
+                    else if (minutes <= 30)
+                    {
+                        Console.WriteLine("Way to go!");
+                    }
+                    else if (minutes <= 60)
+                    {
+                        Console.WriteLine("Look at you, you machine you!");
+                    }
+                    else 
+                    {
+                        Console.WriteLine("...show off");
+                    }
 
                     // Add minutes exercised to total 
                     runningTotal = runningTotal + minutes;
